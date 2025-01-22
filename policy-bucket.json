@@ -1,0 +1,82 @@
+{
+    "Statement": [
+        {
+            "Action": [
+                "s3:AbortMultipartUpload",
+                "s3:GetBucketLocation",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:ListBucketMultipartUploads",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::serasaexperian-ecs-datalakehouse-prd-raw/*",
+                "arn:aws:s3:::serasaexperian-ecs-datalakehouse-prd-raw"
+            ],
+            "Sid": ""
+        },
+        {
+            "Action": [
+                "kms:GenerateDataKey",
+                "kms:Decrypt",
+                "kms:Encrypt"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:kms:us-east-1:387979423286:key/aa8c4289-2333-48b1-bbae-626cc06a4cd6"
+            ]
+        },
+        {
+            "Action": [
+                "kms:Encrypt",
+                "kms:GenerateDataKey"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:kms:us-east-1:093785888205:key/1c32ec56-c0d4-4240-8cf4-69e5428a47ba"
+            ]
+        }
+    ],
+    "Version": "2012-10-17"
+}
+{
+    "Statement": [
+        {
+            "Action": [
+                "kinesis:Get*",
+                "kinesis:GetRecords",
+                "kinesis:GetShardIterator",
+                "kinesis:DescribeStreamSummary",
+                "kinesis:DescribeStream",
+                "kinesis:ListStreams",
+                "kinesis:PutRecord",
+                "kinesis:PutRecords"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:kinesis:us-east-1:387979423286:stream/ewallet-cart-bills-to-pay-prd"
+        },
+        {
+            "Action": [
+                "kms:Decrypt",
+                "kms:GenerateDataKey*"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:kms:us-east-1:387979423286:key/aa8c4289-2333-48b1-bbae-626cc06a4cd6"
+            ]
+        },
+        {
+            "Action": [
+                "kms:Encrypt",
+                "kms:GenerateDataKey"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:kms:us-east-1:093785888205:key/1c32ec56-c0d4-4240-8cf4-69e5428a47ba"
+            ]
+        }
+    ],
+    "Version": "2012-10-17"
+}
